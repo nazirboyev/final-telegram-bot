@@ -5,7 +5,7 @@ config();
 import onStart from "./handlers/onStart.js";
 
 export const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
-const CHANNEL_ID = "@academy_100x_uz";
+const CHANNEL_ID = "@nazirboyevvvv";
 
 const checkIfUserSubscribed = async (chatId) => {
   try {
@@ -85,7 +85,7 @@ bot.on("callback_query", async (query) => {
   const data = query.data;
   const id = query.id;
 
-  const chatId = msg.chat.id;
+  const chatId = msg.chat.id;   
   const firstname = msg.chat.first_name;
 
   if (data == "confirm_subscribtion") {
