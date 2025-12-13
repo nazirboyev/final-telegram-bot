@@ -3,33 +3,29 @@ import { bot } from "../bot.js";
 const onStart = async (msg) => {
   const chatId = msg.chat.id;
   const firstname = msg.chat.first_name;
-
+};
+if (text == "📚 Fanlar") {
   bot.sendMessage(
     chatId,
-    `
-      👋 Assalomu alaykum, ${firstname}!
-    
-    📚 100x o‘quv markazining rasmiy botiga xush kelibsiz!
-    
-    Bu bot orqali siz:
-    • Kurslarimiz haqida batafsil ma’lumot olasiz  
-    • Kurslarga onlayn ro‘yxatdan o‘tishingiz mumkin  
-    • Jadval va to‘lovlar haqida ma’lumot olasiz  
-    
-    Quyidagi menyudan kerakli bo‘limni tanlang 👇
-    
-      `,
-    {
-      reply_markup: {
-        keyboard: [
-          [{ text: "📚 Kurslar" }, { text: "✍️ Ro‘yxatdan o‘tish" }],
-          [{ text: "ℹ️ Markaz haqida" }, { text: "💬 Fikr bildirish" }],
-          [{ text: "❓ Yordam" }],
-        ],
-        resize_keyboard: true,
-      },
-    }
-  );
-};
+    `🎓 Bizning o'quv markazimizda quyidagi fanlar mavjud:
+    1️⃣ Ingliz tili  
+    2️⃣ Rus tili  
+    3️⃣ Turk tili
+    4️⃣ Nemis tili 
+    👇 Quyidagi fanlardan birini tanlang va batafsil ma’lumot oling:`,
+            {
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: "🇬🇧 Ingliz tili", callback_data: "course_english" }],
+            [{ text: "🇷🇺 Rus tili", callback_data: "course_russia" }],
+            [{ text: "➕ Matematika", callback_data: "course_math" }],
+            [{ text: "🖥 Informatika", callback_data: "course_informatics" }],
+            [{ text: "🇺🇿 Ona tili", callback_data: "course_uzbek" }],
+          ],
+        },
+      }
+
+  )
+}
 
 export default onStart;

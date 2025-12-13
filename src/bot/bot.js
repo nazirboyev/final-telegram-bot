@@ -56,8 +56,8 @@ bot.on("message", async (msg) => {
           inline_keyboard: [
             [
               {
-                text: "100x Academy Xiva",
-                url: `https://t.me/academy_100x_uz`,
+                text: "nazirboyev channel",
+                url: `https://t.me/nazirboyevvvv`,
               },
             ],
             [
