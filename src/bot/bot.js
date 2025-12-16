@@ -8,10 +8,9 @@ export const bot = new TelegramBot(process.env.BOT_TOKEN, {
   polling: true,
 });
 
-// 🔴 KANAL USERNAME (bot admin bo‘lishi shart)
+
 const CHANNEL_ID = "@nazirboyevvvvv";
 
-// ================== OBUNANI TEKSHIRISH ==================
 const checkIfUserSubscribed = async (chatId) => {
   try {
     const member = await bot.getChatMember(CHANNEL_ID, chatId);
@@ -26,7 +25,7 @@ const checkIfUserSubscribed = async (chatId) => {
   }
 };
 
-// ================== MAJBURIY OBUNA XABARI ==================
+
 const sendSubscribeMessage = (chatId, firstname) => {
   return bot.sendMessage(
     chatId,
@@ -52,7 +51,7 @@ const sendSubscribeMessage = (chatId, firstname) => {
   );
 };
 
-// ================== MESSAGE HANDLER ==================
+
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
   const firstname = msg.chat.first_name || "Do‘st";
@@ -60,26 +59,23 @@ bot.on("message", async (msg) => {
 
   const isSubscribed = await checkIfUserSubscribed(chatId);
 
-  // 🔒 Agar obuna bo‘lmagan bo‘lsa — blok
   if (!isSubscribed) {
     return sendSubscribeMessage(chatId, firstname);
   }
 
-  // /start
+
   if (text === "/start") {
     return onStart(msg);
   }
 
-  
 
-  // oddiy javob
   bot.sendMessage(chatId, `Assalomu alaykum, ${firstname}`);
+  bot.sendMessage(chatId,  `siz ${text} tugmasini bosdingiz`)
 });
 
-// ================== CALLBACK HANDLER ==================
 bot.on("callback_query", async (query) => {
   const chatId = query.message.chat.id;
-  const firstname = query.message.chat.first_name || "Do‘st";
+  const firstname = query.message.chat.first_name || `${first_name}`;
   const messageId = query.message.message_id;
 
   if (query.data === "confirm_subscription") {
@@ -92,7 +88,7 @@ bot.on("callback_query", async (query) => {
       });
     }
 
-    // obuna bo‘lgan bo‘lsa
+
     await bot.deleteMessage(chatId, messageId);
     await bot.answerCallbackQuery(query.id, {
       text: "✅ Obuna tasdiqlandi",
