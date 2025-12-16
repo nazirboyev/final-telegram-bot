@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
-import User from "./models/User.js";
-import onStart from "./src/bot/handlers/onStart.js";
+
+// 🔽 BOT va HANDLERLAR
 import "./src/bot/bot.js";
 
-
+// ================= DATABASE =================
 mongoose
-.connect(process.env.MONGO_URI)
-.then(() =>{
-    console.log(`DB is connected...`);
-})
-.catch(() => {
-    console.log(`Error: db is not connected!!!`);
-    
-})
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("DB is connected...");
+  })
+  .catch(() => {
+    console.log("Error: db is not connected!!!");
+  });
+
 
 
 console.log("Dastur boshlanmoqda...");
