@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    telegramId: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     firstname: {
         type: String,
+    },
+    chatId: {
+      type: Number,
+      required: true,
+      unique: true,
     },
     balance: {
         type: Number,
